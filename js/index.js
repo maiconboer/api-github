@@ -1,7 +1,7 @@
 
 const body = document.querySelector('body')
 const sectionInput = document.querySelector('.section-input')
-const footer = document.querySelector('.footer') 
+const footer = document.querySelector('.footer')
 const btnSearch = document.querySelector('.btn-search')
 const inputUser = document.querySelector('input')
 let arrayRepos = []
@@ -30,7 +30,12 @@ function searchDataUser(url) {
                 showRepos()
             }
         }))
-        .catch(error => console.log(error), window.alert("Usuário inexistente!"))
+        .catch(error => {
+            console.log(error)
+            if (error.response.status === 404) {
+                window.alert("Usuário inexistente!")
+            }
+        })
 }
 
 btnSearch.addEventListener('click', (event) => {
@@ -41,10 +46,10 @@ btnSearch.addEventListener('click', (event) => {
 function showRepos() {
 
     const listRepositories = document.querySelector('.list-repositories')
-    if(listRepositories) {
+    if (listRepositories) {
         listRepositories.remove()
     }
-    
+
     const div = document.createElement('div')
     div.classList.add('list-repositories')
     body.insertBefore(div, footer)
@@ -64,8 +69,8 @@ function showRepos() {
 
         for (let i = 1; i < sizeProperties(); i++) {
             const li = document.createElement('li')
-            
-            if(Object.keys(repos)[i] === 'link') {
+
+            if (Object.keys(repos)[i] === 'link') {
 
                 let elementA = document.createElement('a')
                 elementA.setAttribute('href', `${Object.values(repos)[i]}`)
@@ -75,10 +80,10 @@ function showRepos() {
                 li.appendChild(elementA)
 
             } else {
-            
+
                 li.innerHTML = `${labels[i]} ${Object.values(repos)[i]}`
             }
-            
+
             ul.appendChild(li)
         }
     }
