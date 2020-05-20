@@ -30,7 +30,7 @@ function searchDataUser(url) {
                 showRepos()
             }
         }))
-        .catch(error => console.log(error))
+        .catch(error => console.log(error), window.alert("Usuário inexistente!"))
 }
 
 btnSearch.addEventListener('click', (event) => {
