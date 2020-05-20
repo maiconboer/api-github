@@ -5,7 +5,7 @@ const footer = document.querySelector('.footer')
 const btnSearch = document.querySelector('.btn-search')
 const inputUser = document.querySelector('input')
 let arrayRepos = []
-let labels = [ `Nome do repositório: `, `Link: `, `Descrição: `, `Estrelas: `]
+let labels = [ `Nome do repositório: `, `Acessar: `, `Descrição: `, `Estrelas: `]
 
 function searchDataUser(url) {
     arrayRepos = []
@@ -59,7 +59,7 @@ function showRepos() {
         for (let i = 1; i < sizeProperties(); i++) {
             const li = document.createElement('li')
 
-            if (Object.keys(repos)[i] === 'link') {
+            if (Object.keys(repos)[i] === 'html_url') {
                 let elementA = document.createElement('a')
                 elementA.setAttribute('href', `${Object.values(repos)[i]}`)
                 elementA.setAttribute('target', '_blank')
