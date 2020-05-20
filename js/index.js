@@ -5,28 +5,18 @@ const footer = document.querySelector('.footer')
 const btnSearch = document.querySelector('.btn-search')
 const inputUser = document.querySelector('input')
 let arrayRepos = []
-let labels = [
-    `Nome do repositório: `,
-    `Link: `,
-    `Descrição: `,
-    `Estrelas: `
-]
+let labels = [ `Nome do repositório: `, `Link: `, `Descrição: `, `Estrelas: `]
 
 function searchDataUser(url) {
     arrayRepos = []
     axios.get(url)
         .then(response => response.data.forEach(repos => {
 
-            let obj = {
-                name: repos.name,
-                link: repos.html_url,
-                description: repos.description,
-                stars: repos.stargazers_count,
-            }
-
-            arrayRepos.push(obj)
+            const { name, html_url, description, stargazers_count } = repos
+            arrayRepos.push({ name, html_url, description, stargazers_count })
 
             if (response.data.length === arrayRepos.length) {
+                inputUser.value = ''
                 showRepos()
             }
         }))
@@ -44,7 +34,6 @@ btnSearch.addEventListener('click', (event) => {
 })
 
 function showRepos() {
-
     const listRepositories = document.querySelector('.list-repositories')
     if (listRepositories) {
         listRepositories.remove()
@@ -71,7 +60,6 @@ function showRepos() {
             const li = document.createElement('li')
 
             if (Object.keys(repos)[i] === 'link') {
-
                 let elementA = document.createElement('a')
                 elementA.setAttribute('href', `${Object.values(repos)[i]}`)
                 elementA.setAttribute('target', '_blank')
@@ -80,7 +68,6 @@ function showRepos() {
                 li.appendChild(elementA)
 
             } else {
-
                 li.innerHTML = `${labels[i]} ${Object.values(repos)[i]}`
             }
 
