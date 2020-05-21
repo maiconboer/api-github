@@ -1,7 +1,7 @@
 body {
     font-family: $font1;
-    background-color: $color1;
-    color: $color3;
+    font-size: $font-size1;
+    background-color: $color3;
     padding: 0;
     margin: 0;
 }
@@ -20,6 +20,7 @@ img {
     width: 100%;
     height: 60px;
     background-color: $color2;
+    color: $color3;
 }
 
 .icon-github {
@@ -42,21 +43,29 @@ img {
 
 .section-input input {
     font-family: $font1;
-    width: 270px;
+    width: 246px;
     padding: 8px;
-    border: none;
+    border: 2px solid $color4;
     border-radius: 5px;
     outline: none;
 }
 
 .btn-search {
-    background-color: $color2;
-    color: $color3;
+    background-color: $color3;
+    color: $color2;
     padding: 8px 12px;
     border-radius: 5px;
-    border: none;
+    border: 2px solid $color2;
+    text-transform: uppercase;
+    font-weight: bold;
     outline: none;
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-search:hover {
+    background-color: $color2;
+    color: $color3;
 }
 
 .list-repositories {
@@ -96,14 +105,29 @@ img {
 }
 
 .list-repositories ul li a {
-    color: $color3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color2;
+    border: 2px solid $color2;
+    border-radius: 5px;
+    padding: 10px 0;
     text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.list-repositories ul li a:hover {
+    background-color: $color2;
+    color: $color4;
 }
 
 .footer {
     width: 100%;
-    height: 40px;
+    height: 50px;
     background-color: $color2;
+    color: $color3;
     position: fixed;
     bottom: 0px;
     text-align: center;

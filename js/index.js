@@ -5,15 +5,15 @@ const footer = document.querySelector('.footer')
 const btnSearch = document.querySelector('.btn-search')
 const inputUser = document.querySelector('input')
 let arrayRepos = []
-let labels = [ `Nome do repositório: `, `Acessar: `, `Descrição: `, `Estrelas: `]
+let labels = [ `Nome do repositório: `, `Descrição: `, `Estrelas: `]
 
 function searchDataUser(url) {
     arrayRepos = []
     axios.get(url)
         .then(response => response.data.forEach(repos => {
 
-            const { name, html_url, description, stargazers_count } = repos
-            arrayRepos.push({ name, html_url, description, stargazers_count })
+            const { name, description, stargazers_count, html_url } = repos
+            arrayRepos.push({ name, description, stargazers_count, html_url })
 
             if (response.data.length === arrayRepos.length) {
                 inputUser.value = ''
@@ -63,10 +63,9 @@ function showRepos() {
                 let elementA = document.createElement('a')
                 elementA.setAttribute('href', `${Object.values(repos)[i]}`)
                 elementA.setAttribute('target', '_blank')
-                elementA.innerHTML = `${Object.values(repos)[i]}`
-                li.innerHTML = `${labels[i]}`
+                elementA.innerHTML = 'Acessar'
                 li.appendChild(elementA)
-
+            
             } else {
                 li.innerHTML = `${labels[i]} ${Object.values(repos)[i]}`
             }
