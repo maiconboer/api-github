@@ -11,5 +11,15 @@ Consuming github api, displaying some data about repositories
 - Description of the repository
 - Number of stars
 
+************************************************
+
+**Desktop**  
 
 ![](https://github.com/maiconboer/api-github/blob/master/assets/img/desktop.png)
+
+************************************************
+
+**Mobile**
+
+![](https://github.com/maiconboer/api-github/blob/master/assets/img/mobile.png)
+
